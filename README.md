@@ -85,7 +85,12 @@ runs on [Cloudflare Pages](https://pages.cloudflare.com/):
 - Build command: `bun run build`
 - Build output directory: `dist`
 - Build environment variable: `BUN_VERSION=1.4.2`
-- Deploy command: `npx wrangler pages deploy dist`
+- Deploy command: `npx wrangler pages deploy dist --project-name www-shou-work`
+
+The project name must match the Pages project exactly, which is `www-shou-work`.
+A wrong name fails the API call with `Authentication error [code: 10000]` rather
+than a clear 404. It is set in `wrangler.jsonc` and passed explicitly to the
+deploy command so the two cannot drift apart.
 
 Use the static or none framework preset. Pages Functions are not required. If
 server-side behavior is added later, Pages Functions run on the Workers runtime
