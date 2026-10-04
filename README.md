@@ -79,27 +79,22 @@ bun run typecheck   # Check TypeScript
 
 ## Deployment 📦
 
-`bun run build` writes a complete static site to `dist/`. The site currently
-runs on [Cloudflare Pages](https://pages.cloudflare.com/):
+`bun run build` writes a complete static site to `dist/`. The site runs on
+[Cloudflare Workers](https://workers.cloudflare.com/) with static assets:
 
 - Build command: `bun run build`
-- Build output directory: `dist`
+- Deploy command: `npx wrangler deploy`
 - Build environment variable: `BUN_VERSION=1.4.2`
-- Deploy command: `npx wrangler pages deploy dist --project-name www-shou-work`
 
-The project name must match the Pages project exactly, which is `www-shou-work`.
-A wrong name fails the API call with `Authentication error [code: 10000]` rather
-than a clear 404. It is set in `wrangler.jsonc` and passed explicitly to the
-deploy command so the two cannot drift apart.
+`wrangler.jsonc` points the Worker at `dist/` as its assets directory, so the
+built site is served without a Worker script. `not_found_handling` is set to
+`404-page` so the hand-written `404.html` is served for unknown paths. Using
+`single-page-application` here would return `index.html` for every unknown URL
+and the 404 page would never appear.
 
-Use the static or none framework preset. Pages Functions are not required. If
-server-side behavior is added later, Pages Functions run on the Workers runtime
-and can be added at that point.
-
-The deploy command must be `wrangler pages deploy`. Plain `wrangler deploy`
-targets Workers, and wrangler refuses it on a Pages project. Without the
-`wrangler.jsonc` in the repository root, wrangler tries to bootstrap a Vite
-plugin and fails on this static build.
+The project is a Worker named `www-shou-work`, not a legacy Pages project.
+`wrangler pages deploy` fails against it because no Pages project by that name
+exists in the account.
 
 ---
 
@@ -111,7 +106,7 @@ plugin and fails on this static build.
 - Native [Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements) - Behavior
 - [Bun](https://bun.sh/) - Task runner
 - [Oxlint](https://oxc.rs/) - Linter
-- [Cloudflare Pages](https://pages.cloudflare.com/) - Hosting
+- [Cloudflare Workers](https://workers.cloudflare.com/) - Hosting
 
 ---
 

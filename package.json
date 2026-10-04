@@ -18,7 +18,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "wrangler pages deploy dist --project-name www-shou-work",
+    "deploy": "wrangler deploy",
     "check": "oxlint .",
     "typecheck": "tsc --noEmit"
   },
