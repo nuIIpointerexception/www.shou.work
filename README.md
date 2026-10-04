@@ -85,10 +85,16 @@ runs on [Cloudflare Pages](https://pages.cloudflare.com/):
 - Build command: `bun run build`
 - Build output directory: `dist`
 - Build environment variable: `BUN_VERSION=1.4.2`
+- Deploy command: `npx wrangler pages deploy dist`
 
 Use the static or none framework preset. Pages Functions are not required. If
 server-side behavior is added later, Pages Functions run on the Workers runtime
 and can be added at that point.
+
+The deploy command must be `wrangler pages deploy`. Plain `wrangler deploy`
+targets Workers, and wrangler refuses it on a Pages project. Without the
+`wrangler.jsonc` in the repository root, wrangler tries to bootstrap a Vite
+plugin and fails on this static build.
 
 ---
 
