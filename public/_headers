@@ -7,20 +7,41 @@
 /404.html
   Cache-Control: public, max-age=0, must-revalidate
 
+# Hashed by Vite on every build, safe to cache forever.
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Stable filenames, replaced in place. Cached for a year but still revalidated
+# on reload, so a replaced file reaches users without a cache purge.
 /fonts/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000
 
 /projects/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000
 
 /hero.webm
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000
 
 /contact.webm
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=31536000
 
 /*-poster.jpg
+  Cache-Control: public, max-age=31536000
+
+/*.gif
+  Cache-Control: public, max-age=31536000
+
+/*.jpg
+  Cache-Control: public, max-age=31536000
+
+/*.png
+  Cache-Control: public, max-age=31536000
+
+/*.svg
+  Cache-Control: public, max-age=31536000
+
+/*.ico
+  Cache-Control: public, max-age=31536000
+
+/*.webmanifest
   Cache-Control: public, max-age=86400
