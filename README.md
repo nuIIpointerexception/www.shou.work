@@ -16,11 +16,11 @@ Live at [shou.work](https://shou.work/).
 ## Showcase
 
 <div>
-    <img src='./.github/assets/1.png' width='1819' alt="Home section: logo over the hero video with the fixed glass navigation bar.">
+    <img src='./.github/assets/1.png' alt="Home section: logo over the hero video with the fixed glass navigation bar.">
     <br>
-    <img src='./.github/assets/2.png' width='1819' alt="Work section: Featured Work heading above a project card.">
+    <img src='./.github/assets/2.png' alt="Work section: Featured Work heading above a project card.">
     <br>
-    <img src='./.github/assets/3.png' width='1819' alt="Contact section: oversized CONTACT heading over the contact video.">
+    <img src='./.github/assets/3.png' alt="Contact section: oversized CONTACT heading over the contact video.">
 </div>
 
 ---
